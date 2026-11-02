@@ -1,0 +1,123 @@
+/* AI Build Club DC, attendee guide design system: tokens.
+   Every value used by components.css lives here. Single light theme, on purpose.
+   Palette is closed: only the hues below. Tints are rgba() of a listed color. */
+
+:root {
+  color-scheme: light;
+
+  /* ---------- Color: the whole palette ---------- */
+  --paper: #f4f4f1;
+  --paper-soft: #fbfaf7;
+  --ink: #202126;
+  --ink-muted: #5d626b;
+  --ink-soft: #858b94;
+  --rule: #d8dde2;
+  --rule-strong: #c4cbd1;
+  --hot: #ff2844;
+  --orange: #ff7a1a;
+  --pink: #ff2d8f;
+  --blue: #123c8c;
+  --black: #050505;
+  --white: #ffffff;
+
+  /* ---------- Color: tints (rgba of a listed color only) ---------- */
+  --tint-hot-glow: rgba(255, 40, 68, 0.10);   /* hero glow */
+  --tint-hot-soft: rgba(255, 40, 68, 0.08);   /* badge fill */
+  --tint-hot-line: rgba(255, 40, 68, 0.35);   /* badge edge */
+  --tint-hot-ring: rgba(255, 40, 68, 0.18);   /* glow around a screenshot ring */
+  --tint-blue: rgba(18, 60, 140, 0.07);       /* Tip callout fill */
+  --tint-blue-line: rgba(18, 60, 140, 0.35);  /* blue badge edge */
+  --tint-orange: rgba(255, 122, 26, 0.12);    /* Heads-up callout fill */
+  --tint-orange-line: rgba(255, 122, 26, 0.55);
+  --tint-ink: rgba(32, 33, 38, 0.06);         /* hover wash, inline code */
+  --grid-line-x: rgba(196, 203, 209, 0.5);    /* rule-strong, hero grid */
+  --grid-line-y: rgba(196, 203, 209, 0.4);
+  --on-dark: rgba(255, 255, 255, 0.72);       /* text on the black footer */
+
+  /* ---------- Typography ---------- */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  /* Plus Jakarta Sans is for all text. Anton is for the page title (uppercase, hot),
+     step numbers, and rare big figures. */
+  --font-display: Anton, Impact, "Arial Narrow Bold", sans-serif;
+
+  /* Type scale, rem based, 7 steps. Base is 16px. */
+  --fs-xs: 0.8125rem;   /* 13px  labels, badges */
+  --fs-sm: 0.9375rem;   /* 15px  captions, nav, table cells */
+  --fs-base: 1.125rem;  /* 18px  body */
+  --fs-md: 1.375rem;    /* 22px  lead, h3, step titles */
+  --fs-lg: 1.75rem;     /* 28px  h2 */
+  --fs-xl: 2.5rem;      /* 40px  step numbers and rare big figures (Anton) */
+  --fs-display: clamp(3rem, 9vw, 6.5rem); /* 48 to 104px  page title (Anton, uppercase, hot) */
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  --lh-display: 1.06;
+  --lh-heading: 1.15;
+  --lh-snug: 1.4;
+  --lh-body: 1.6;
+
+  --tracking-heading: 0;
+  --tracking-label: 0.12em;
+
+  /* ---------- Spacing, 4px base ---------- */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.5rem;   /* 24 */
+  --space-6: 2rem;     /* 32 */
+  --space-7: 3rem;     /* 48 */
+  --space-8: 4rem;     /* 64 */
+  --space-9: 6rem;     /* 96 */
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 4px;     /* tags, placeholders, small controls */
+  --radius-md: 10px;    /* cards, windows (the deck's card radius) */
+  --radius-pill: 999px; /* chips, badges, buttons */
+
+  /* ---------- Shadows (rgba(24,28,38,a) only) ---------- */
+  --shadow-soft: 0 8px 24px rgba(24, 28, 38, 0.08);
+  --shadow: 0 18px 60px rgba(24, 28, 38, 0.12);
+  /* Wordmark outline so the white lettering reads on paper (same as the deck). */
+  --wordmark-outline: drop-shadow(0 1px 0 rgba(24, 28, 38, 0.9)) drop-shadow(1px 0 0 rgba(24, 28, 38, 0.9)) drop-shadow(0 -1px 0 rgba(24, 28, 38, 0.76)) drop-shadow(-1px 0 0 rgba(24, 28, 38, 0.76)) drop-shadow(0 8px 18px rgba(24, 28, 38, 0.18));
+
+  /* ---------- Breakpoints ----------
+     Documentation tokens. CSS cannot read custom properties inside @media,
+     so components.css uses the literal values below. Keep them in sync. */
+  --bp-sm: 480px;   /* small phones become roomy phones */
+  --bp-md: 960px;   /* side nav appears, reading column + nav */
+  --bp-lg: 1200px;  /* wide laptop, more room around the column */
+
+  /* ---------- Layout ---------- */
+  --gutter: clamp(1rem, 4vw, 2rem); /* never below 16px */
+  --wrap: 72rem;
+  --measure: 40rem;   /* about 72 characters at 18px */
+  --wide: 60rem;      /* style guide column */
+  --nav-w: 15rem;
+  --tap: 2.75rem;     /* 44px minimum tap target */
+  --grid-cell: 80px;  /* hero grid, the deck's 160px scaled down for web */
+  --grid-reach: 11rem; /* how far down the hero the grid fades out, so it stops above the lead */
+
+  /* ---------- Focus ---------- */
+  --focus-width: 2px;
+  --focus-color: var(--blue);
+  --focus-color-on-dark: var(--white);
+  --focus-offset: 3px;
+
+  /* ---------- Motion ---------- */
+  --ease-deck: cubic-bezier(0.22, 0.85, 0.18, 1);
+  --dur-fast: 160ms;
+  --dur-move: 800ms;
+
+  /* ---------- Layers ---------- */
+  --z-nav: 10;
+
+  /* ---------- Icons (used as masks, so they take the text color) ---------- */
+  --icon-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 11.5l7-7M5.5 4.5h6v6' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 960px) {
+  :root { --grid-reach: 17rem; }
+}

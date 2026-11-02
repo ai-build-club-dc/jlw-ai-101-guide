@@ -1,0 +1,1331 @@
+/* AI Build Club DC, attendee guide design system: components.
+   Built only from tokens.css. Load tokens.css first.
+   Mobile first. The breakpoint literals below match --bp-sm, --bp-md, --bp-lg. */
+
+/* ============================================================
+   1. Base
+   ============================================================ */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--space-4);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+p, ul, ol, dl { margin: 0 0 var(--space-4); }
+
+/* Links: ink text, hot underline, thicker on hover. Never hot text. */
+a {
+  color: var(--ink);
+  text-decoration-line: underline;
+  text-decoration-color: var(--hot);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-thickness var(--dur-fast) ease;
+}
+a:hover,
+a.is-hover { text-decoration-thickness: 0.22em; }
+
+/* One visible focus ring for every interactive element */
+:where(a, button, input, summary, [tabindex]):focus-visible {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-sm);
+}
+
+strong { font-weight: var(--fw-semibold); }
+
+[hidden] { display: none !important; }
+
+hr, .rule {
+  height: 0;
+  margin: var(--space-7) 0;
+  border: 0;
+  border-top: 1px solid var(--rule-strong);
+}
+.rule--short { width: 4rem; border-top: 3px solid var(--hot); }
+
+/* Inline code in the style guide: same face, quiet chip */
+code {
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  background: var(--tint-ink);
+  font-family: var(--font-sans);
+  font-size: 0.9em;
+  font-weight: var(--fw-medium);
+  overflow-wrap: anywhere;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: var(--space-2);
+  z-index: calc(var(--z-nav) + 1);
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-sm);
+  transform: translateY(-300%);
+}
+.skip-link:focus { transform: none; }
+
+/* Fade-up on load. Content is visible at rest: the animation only pulls the
+   start state in before it runs, and nothing waits on script. */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up { animation: fade-up var(--dur-move) var(--ease-deck) backwards; }
+.fade-up--2 { animation-delay: 120ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   2. Layout: wrap, masthead, page grid, content column
+   ============================================================ */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.page { padding-top: var(--space-5); }
+
+.content {
+  min-width: 0;
+  max-width: var(--measure);
+  padding-block: var(--space-5) var(--space-6);
+}
+.content--wide { max-width: var(--wide); }
+
+/* Text keeps a readable line length even inside the wide column */
+:where(.content) :where(p, ul, ol, dl, .callout, .prompt, .checklist) { max-width: var(--measure); }
+
+.content > h2:first-child { margin-top: 0; }
+
+@media (min-width: 960px) {
+  .page {
+    display: grid;
+    grid-template-columns: var(--nav-w) minmax(0, 1fr);
+    column-gap: var(--space-8);
+    align-items: start;
+    padding-top: var(--space-7);
+  }
+  .content { padding-top: 0; }
+}
+
+/* ============================================================
+   3. Wordmark
+   ============================================================ */
+
+.wordmark { display: block; height: auto; }
+/* On paper the white lettering needs the deck's outline to read */
+.wordmark--paper { filter: var(--wordmark-outline); }
+/* On the black footer it is used plain */
+
+/* ============================================================
+   4. Masthead, site header, page hero
+   ============================================================ */
+
+/* Groups header and hero so the soft red glow sits behind both, top right */
+.masthead {
+  background:
+    radial-gradient(circle at 86% 10%, var(--tint-hot-glow), transparent 640px),
+    var(--paper);
+}
+
+.site-header { border-bottom: 1px solid var(--rule); }
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+  padding-block: var(--space-4);
+}
+
+.site-header__logo { width: 9rem; }
+
+.site-header__title {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--ink-muted);
+}
+
+@media (min-width: 480px) {
+  .site-header__logo { width: 13.75rem; }
+  .site-header__title {
+    padding-left: var(--space-5);
+    border-left: 1px solid var(--rule-strong);
+    line-height: 1.8;
+  }
+}
+
+/* Hero: sentence case title in ink, plain lead. The faint grid lives here and nowhere
+   near reading text. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(90deg, var(--grid-line-x) 1px, transparent 1px),
+    linear-gradient(180deg, var(--grid-line-y) 1px, transparent 1px);
+  background-size: var(--grid-cell) var(--grid-cell);
+  opacity: 0.6;
+  /* Fades out above the lead paragraph, so the grid never sits behind reading text */
+  -webkit-mask-image: linear-gradient(to bottom, var(--black) calc(var(--grid-reach) * 0.4), transparent var(--grid-reach));
+  mask-image: linear-gradient(to bottom, var(--black) calc(var(--grid-reach) * 0.4), transparent var(--grid-reach));
+}
+.hero__inner { padding-block: var(--space-7) var(--space-8); }
+
+/* Hero with a QR code beside the title, sized for the back of a room.
+   Shown on laptops and projectors only; people on phones are already here. */
+.hero__qr { display: none; margin: 0; }
+@media (min-width: 960px) {
+  .hero__inner--qr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--space-8);
+  }
+  .hero__qr {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+  }
+  .hero__qr img { display: block; width: clamp(16rem, 27vw, 26rem); height: auto; image-rendering: pixelated; }
+  .hero__qr figcaption { font-size: var(--fs-md); font-weight: var(--fw-semibold); color: var(--ink); }
+}
+
+/* Page title: the deck's big red Anton moment. Write it in sentence case in the HTML;
+   CSS uppercases it. Large Anton clears the 3:1 contrast bar for large text. */
+.hero__title {
+  max-width: 12ch; /* "Get started with Claude" breaks as GET STARTED / WITH CLAUDE */
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-regular);
+  line-height: 0.95;
+  letter-spacing: var(--tracking-heading);
+  text-transform: uppercase;
+  color: var(--hot);
+  text-wrap: balance;
+}
+
+.hero__lead {
+  max-width: 36rem;
+  margin: var(--space-5) 0 0;
+  font-size: var(--fs-base);
+  line-height: var(--lh-snug);
+  color: var(--ink-muted);
+}
+
+@media (min-width: 480px) {
+  .hero__lead { font-size: var(--fs-md); }
+}
+
+@media (min-width: 960px) {
+  .hero__inner { padding-block: var(--space-8) var(--space-9); }
+}
+
+/* ============================================================
+   5. Site footer: the black band
+   ============================================================ */
+
+.site-footer {
+  margin-top: var(--space-9);
+  background: var(--black);
+  color: var(--on-dark);
+  font-size: var(--fs-sm);
+}
+.site-footer__inner {
+  display: grid;
+  gap: var(--space-5);
+  padding-block: var(--space-7);
+}
+.site-footer__logo { width: 13.75rem; }
+.site-footer p { margin: 0 0 var(--space-2); max-width: 36rem; }
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  color: var(--white);
+  text-decoration-color: var(--hot);
+}
+.site-footer :where(a):focus-visible { outline-color: var(--focus-color-on-dark); }
+
+@media (min-width: 960px) {
+  .site-footer__inner {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: var(--space-8);
+  }
+}
+
+/* ============================================================
+   6. Navigation: chips on phones, sticky side nav on laptops
+   ============================================================ */
+
+.nav {
+  z-index: var(--z-nav);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* On phones the chips wrap onto as many rows as they need, so none is hidden */
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-2) var(--space-1);
+  list-style: none;
+}
+
+.nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-pill);
+  background: var(--paper-soft);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background var(--dur-fast) ease;
+}
+.nav__link:hover { background: var(--tint-ink); }
+
+/* A page that does not exist yet: plain text, not a link, not focusable */
+.nav__item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border: 1px dashed var(--rule-strong);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--ink-muted);
+}
+.nav__soon { font-size: var(--fs-xs); font-weight: var(--fw-regular); color: var(--ink-muted); }
+/* A page that is planned but not built yet: same pill as a link, but a plain span, so it does nothing */
+.nav__link--later { cursor: default; }
+.nav__link--later:hover { background: var(--paper-soft); }
+.nav__link[aria-current="page"],
+.nav__link[aria-current="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* Side nav: laptop and up */
+@media (min-width: 960px) {
+  .nav {
+    position: sticky;
+    top: var(--space-5);
+    align-self: start;
+    max-height: calc(100vh - var(--space-7));
+    overflow-y: auto;
+    margin-inline: 0;
+    padding-inline: 0;
+    background: transparent;
+    border-bottom: 0;
+  }
+  .nav__list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0;
+    overflow: visible;
+    border-left: 1px solid var(--rule);
+  }
+  .nav__link {
+    min-height: var(--tap);
+    margin-left: -1px;
+    padding: var(--space-1) var(--space-4);
+    border: 0;
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    white-space: normal;
+    color: var(--ink-muted);
+  }
+  .nav__link:hover { background: transparent; color: var(--ink); border-left-color: var(--rule-strong); }
+  .nav__link[aria-current="page"],
+  .nav__link[aria-current="true"] {
+    background: transparent;
+    border-left-color: var(--hot);
+    font-weight: var(--fw-semibold);
+    color: var(--ink);
+  }
+  .nav__soon { flex-basis: 100%; }
+  .nav__item {
+    display: flex;
+    min-height: var(--tap);
+    margin-left: -1px;
+    padding: var(--space-1) var(--space-4);
+    border: 0;
+    border-left: 2px solid transparent;
+    border-radius: 0;
+    white-space: normal;
+  }
+  .nav__link--later:hover { color: var(--ink-muted); border-left-color: transparent; }
+}
+
+/* Top nav at every width: add .page--topnav to .page. The pills stay in a row
+   above the content, left aligned, and the content gets the whole wrap width. */
+@media (min-width: 960px) {
+  .page--topnav {
+    display: block;
+    padding-top: var(--space-5);
+  }
+  .page--topnav > .nav {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin: 0 0 var(--space-5);
+    padding: 0;
+    background: transparent;
+    border-bottom: 0;
+  }
+  .page--topnav .nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-1) 0;
+    border-left: 0;
+  }
+  .page--topnav .nav__link {
+    min-height: var(--tap);
+    margin-left: 0;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    background: var(--paper-soft);
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  .page--topnav .nav__link:hover { background: var(--tint-ink); color: var(--ink); border-color: var(--rule-strong); }
+  .page--topnav .nav__link--later:hover { background: var(--paper-soft); }
+  .page--topnav .nav__link[aria-current="page"],
+  .page--topnav .nav__link[aria-current="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    font-weight: var(--fw-medium);
+    color: var(--paper);
+  }
+  .page--topnav .nav__item {
+    display: inline-flex;
+    margin-left: 0;
+    padding: 0 var(--space-4);
+    border: 1px dashed var(--rule-strong);
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+  .page--topnav .nav__soon { flex-basis: auto; }
+}
+.page--topnav .content { max-width: none; }
+
+/* ============================================================
+   7. Section headings
+   ============================================================ */
+
+h2, .h2 { font-size: var(--fs-lg); margin-top: var(--space-8); margin-bottom: var(--space-4); }
+h3, .h3 { font-size: var(--fs-md); margin-top: var(--space-6); margin-bottom: var(--space-3); }
+.h2, .h3 { display: block; font-weight: var(--fw-semibold); }
+
+/* Plain intro text under the hero or a heading */
+.lead {
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   8. Numbered steps (real sequences only)
+   ============================================================ */
+
+.steps {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+.step {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  column-gap: var(--space-4);
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--rule);
+  counter-increment: step;
+}
+.step::before {
+  content: counter(step);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-regular);
+  line-height: 1;
+  color: var(--hot);
+}
+.step__title { margin: 0 0 var(--space-2); font-size: var(--fs-md); }
+.step__body { min-width: 0; }
+.step__body > :last-child { margin-bottom: 0; }
+
+@media (min-width: 480px) {
+  .step { grid-template-columns: 3.5rem minmax(0, 1fr); column-gap: var(--space-5); }
+}
+
+/* ============================================================
+   9. Copyable prompt block
+   ============================================================ */
+
+.prompt {
+  margin-block: var(--space-5);
+  padding: var(--space-5);
+  background: var(--paper-soft);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+}
+.prompt__text {
+  margin: 0 0 var(--space-4);
+  color: var(--ink);
+  user-select: text;
+  white-space: pre-line; /* keeps the line breaks you type, and the ones that get copied */
+}
+.prompt__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+}
+.prompt__hint {
+  font-size: var(--fs-sm);
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   10. Screenshot frame
+   ============================================================ */
+
+.frame { margin: var(--space-5) 0; }
+.frame__window {
+  overflow: hidden;
+  background: var(--paper-soft);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+.frame__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 2.5rem;
+  padding-inline: var(--space-4);
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.frame__bar i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--ink-soft);
+  border-radius: 50%;
+}
+.frame__title {
+  margin-left: var(--space-3);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--ink-muted);
+}
+.frame__body img { display: block; width: 100%; height: auto; }
+/* Screenshot annotation ring. Position it in percent of the image with
+   --x --y --w --h, so it scales with the image at every width. */
+.frame__shot { position: relative; }
+.frame__ring {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  border: 3px solid var(--hot);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0 0 4px var(--tint-hot-ring), 0 0 14px 2px var(--tint-hot-ring);
+  pointer-events: none;
+}
+
+/* Phone crop: on a phone the screenshot can be swapped for a tighter crop with a
+   <picture> source (max-width: 600px). Give the ring a second set of numbers for
+   that crop with --x-sm --y-sm --w-sm --h-sm. Without them the ring keeps --x --y --w --h. */
+@media (max-width: 600px) {
+  .frame__ring {
+    left: var(--x-sm, var(--x));
+    top: var(--y-sm, var(--y));
+    width: var(--w-sm, var(--w));
+    height: var(--h-sm, var(--h));
+  }
+}
+
+/* Embedded video: a 16 by 9 box, whatever the source */
+.frame__body iframe,
+.frame__body video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: var(--paper-soft);
+}
+.frame__placeholder {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  padding: var(--space-4);
+  background: var(--paper-soft);
+  color: var(--ink-muted);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  text-align: center;
+}
+/* A narrow frame for a tall, thin screenshot such as a sidebar */
+.frame--narrow { max-width: 20rem; }
+.frame__caption {
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+  color: var(--ink-muted);
+}
+
+/* ============================================================
+   11. Callouts. Square corners, flat edge accent, ink text.
+   ============================================================ */
+
+.callout {
+  margin-block: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border-left: 3px solid var(--blue);
+  background: var(--tint-blue);
+  color: var(--ink);
+}
+.callout > :last-child { margin-bottom: 0; }
+.callout--tip { border-left-color: var(--blue); background: var(--tint-blue); }
+.callout--headsup { border-left-color: var(--orange); background: var(--tint-orange); }
+
+/* ============================================================
+   12. Glossary list and A to Z jump row
+   ============================================================ */
+
+.az {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: var(--space-4) 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+}
+.az__link {
+  display: inline-grid;
+  place-items: center;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  background: var(--paper-soft);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background var(--dur-fast) ease;
+}
+a.az__link:hover { background: var(--tint-ink); }
+.az__link[aria-disabled="true"] {
+  border-color: var(--rule);
+  background: transparent;
+  font-weight: var(--fw-regular);
+  color: var(--ink-soft);
+}
+
+.glossary { margin: 0; }
+/* Letter heading above a group of terms. The A to Z row jumps here. */
+.glossary__group { margin-top: var(--space-6); }
+.glossary__group:first-of-type { margin-top: var(--space-5); }
+.glossary__letter {
+  margin: 0 0 var(--space-2);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  scroll-margin-top: var(--space-4);
+}
+.glossary__entry {
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: var(--space-4);
+}
+.glossary__entry:last-child { border-bottom: 1px solid var(--rule); }
+.glossary dt { font-weight: var(--fw-semibold); color: var(--ink); }
+.glossary dd { margin: var(--space-1) 0 0; color: var(--ink); }
+
+/* ============================================================
+   13. Buttons
+   ============================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0 var(--space-5);
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  line-height: 1.2;
+  text-decoration: none;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+.btn--primary { background: var(--ink); color: var(--paper); }
+.btn--primary:hover,
+.btn--primary.is-hover {
+  text-decoration-line: underline;
+  text-decoration-color: var(--hot);
+  text-decoration-thickness: 0.12em;
+  text-underline-offset: 0.25em;
+}
+.btn--secondary:hover,
+.btn--secondary.is-hover { background: var(--tint-ink); }
+/* .is-hover and .is-focus freeze a state so the style guide can show it */
+.btn.is-focus {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+}
+
+/* Arrow icon inside a button: matches the stroke style of the chevrons */
+.btn svg {
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+}
+.btn svg:first-child { margin-right: 0.5em; }
+.btn [data-wz-next-icon] { display: inline-flex; margin-left: 0.5em; }
+.btn [data-wz-next-icon] svg { margin: 0; }
+
+/* Launch button: a rounded rectangle that opens another site. Hot outline and
+   icon, ink text, never hot text. */
+.btn--launch {
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border: 2px solid var(--hot);
+  border-radius: var(--radius-md);
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+.btn--launch:hover,
+.btn--launch.is-hover { background: var(--tint-hot-soft); }
+.btn--launch svg {
+  margin: 0 0 0 0.6em;
+  color: var(--hot);
+}
+
+/* Text button: reads like a link, acts like a button */
+.btn--text {
+  padding: 0 var(--space-2);
+  border-color: transparent;
+  border-radius: var(--radius-sm);
+  text-decoration-line: underline;
+  text-decoration-color: var(--hot);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+}
+.btn--text:hover,
+.btn--text.is-hover { text-decoration-thickness: 0.22em; }
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================================
+   14. Links
+   ============================================================ */
+
+/* Inline links use the base `a` style. External links add an arrow. */
+.link-external::after {
+  content: "";
+  display: inline-block;
+  width: 0.75em;
+  height: 0.75em;
+  margin-left: 0.25em;
+  vertical-align: -0.02em;
+  background: currentColor;
+  -webkit-mask: var(--icon-external) no-repeat center / contain;
+  mask: var(--icon-external) no-repeat center / contain;
+}
+
+.link-term {
+  text-decoration-style: dotted;
+  text-decoration-thickness: 0.14em;
+}
+a.link-term:hover { text-decoration-style: dotted; text-decoration-thickness: 0.24em; }
+
+/* Name an interface control or a key in running text */
+.ui,
+kbd {
+  padding: 0.05em 0.45em;
+  border-radius: var(--radius-sm);
+  background: var(--tint-ink);
+  font-family: var(--font-sans);
+  font-size: 0.95em;
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+  color: var(--ink);
+}
+kbd { border: 1px solid var(--rule-strong); background: var(--paper-soft); }
+
+/* ============================================================
+   15. Checklist
+   ============================================================ */
+
+.checklist {
+  margin: var(--space-4) 0;
+  padding: 0;
+  list-style: none;
+}
+.checklist > li { border-top: 1px solid var(--rule); }
+.checklist > li:last-child { border-bottom: 1px solid var(--rule); }
+
+.check {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  min-height: var(--tap);
+  padding-block: var(--space-2);
+  cursor: pointer;
+}
+.check__input {
+  position: absolute;
+  left: 0;
+  top: calc(var(--space-2) + 0.15rem);
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.check__box {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.15rem;
+  border: 2px solid var(--rule-strong);
+  border-radius: 50%;
+  background: transparent center / 100% 100% no-repeat;
+  background-origin: border-box;
+  transition: border-color var(--dur-fast) ease;
+}
+.check:hover .check__box { border-color: var(--ink-soft); }
+/* Checked uses Nadeen's own icon as-is */
+.check__input:checked + .check__box {
+  border-color: transparent;
+  background-image: url("assets/check-green.png");
+}
+.check__input:focus-visible + .check__box {
+  outline: var(--focus-width) solid var(--focus-color);
+  outline-offset: var(--focus-offset);
+}
+
+/* ============================================================
+   16. Example output table
+   ============================================================ */
+
+.table-figure { margin: var(--space-5) 0; max-width: 100%; }
+.table-figure__caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--ink-muted);
+}
+/* The table always scrolls inside its own wrapper, never the page */
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+}
+.table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-snug);
+}
+.table th,
+.table td {
+  padding: var(--space-3) var(--space-4) var(--space-3) 0;
+  text-align: left;
+  vertical-align: top;
+}
+.table th {
+  border-bottom: 2px solid var(--ink);
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+}
+.table td { border-bottom: 1px solid var(--rule); }
+.table tr:last-child td { border-bottom: 0; }
+.table td:first-child { font-weight: var(--fw-medium); }
+.table__muted { color: var(--ink-muted); }
+
+/* ============================================================
+   17. Badge / chip
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.1rem 0.7rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-pill);
+  background: var(--paper-soft);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.6;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.badge--hot::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--hot);
+}
+.badge--hot { border-color: var(--tint-hot-line); background: var(--tint-hot-soft); }
+.badge--blue { border-color: var(--tint-blue-line); background: var(--tint-blue); }
+.badge--orange { border-color: var(--tint-orange-line); background: var(--tint-orange); }
+
+/* ============================================================
+   18. Sources line
+   ============================================================ */
+
+.sources {
+  font-size: var(--fs-sm);
+  color: var(--ink-muted);
+}
+.sources a { color: var(--ink); }
+
+/* ============================================================
+   19. Pager: previous and next page links
+   ============================================================ */
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-block: var(--space-7);
+}
+.pager__link {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 15rem;
+  gap: var(--space-1);
+  min-height: var(--tap);
+  max-width: 22rem;
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+  background: var(--paper-soft);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background var(--dur-fast) ease;
+}
+.pager__link:hover { background: var(--tint-ink); }
+.pager__link--next { margin-left: auto; text-align: right; }
+.pager__dir { font-size: var(--fs-sm); color: var(--ink-muted); }
+.pager__title {
+  font-weight: var(--fw-semibold);
+  text-decoration-line: underline;
+  text-decoration-color: var(--hot);
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+}
+.pager__link:hover .pager__title { text-decoration-thickness: 0.22em; }
+
+/* ============================================================
+   20. Closing section: "Want to go further?"
+   ============================================================ */
+
+.further {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+.further > * { margin: 0; }
+.further__title { font-size: var(--fs-lg); }
+.further__image {
+  width: 100%;
+  max-width: 16rem;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================
+   21. Step by step wizard: one step per screen
+   Without script, every step shows stacked in order and the bar and the
+   Back and Next buttons stay hidden. Script adds .wizard--js.
+   ============================================================ */
+
+.wizard__bar {
+  scroll-margin-top: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  background: var(--paper-soft);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-md);
+}
+.wizard__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  margin: 0 0 var(--space-3);
+}
+.wizard__stepnav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+/* Round 44px arrow buttons, outlined like the secondary button */
+.wizard__arrow {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--dur-fast) ease;
+}
+.wizard__arrow:hover { background: var(--tint-ink); }
+.wizard__arrow[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.wizard__count {
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.wizard__phase {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+}
+
+.wizard__progress {
+  position: relative;
+  height: 6px;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--rule);
+}
+.wizard__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--p, 0%);
+  border-radius: var(--radius-pill);
+  background: var(--hot);
+  transition: width var(--dur-move) var(--ease-deck);
+}
+.wizard__fill::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--hot);
+  transform: translateY(-50%);
+}
+
+/* All steps: a disclosure list of every step, grouped by phase */
+.wizard__all > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.wizard__all > summary::-webkit-details-marker { display: none; }
+.wizard__all > summary::after {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  margin: -0.2em 0 0 0.7em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--dur-fast) ease;
+}
+.wizard__all[open] > summary::after { transform: rotate(-135deg); margin-top: 0.2em; }
+
+.wizard__panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--rule);
+}
+.wizard__group-name {
+  margin: 0 0 var(--space-1);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.wizard__items { margin: 0; padding: 0; list-style: none; }
+.wizard__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  color: var(--ink);
+}
+.wizard__link::before {
+  content: attr(data-step);
+  flex: none;
+  min-width: 1.25rem;
+  font-weight: var(--fw-medium);
+  color: var(--ink-muted);
+}
+.wizard__link:hover { background: var(--tint-ink); }
+.wizard__link[aria-current="step"] {
+  background: var(--tint-ink);
+  font-weight: var(--fw-semibold);
+}
+.wizard__link[aria-current="step"]::after {
+  content: "";
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--hot);
+}
+
+.wizard:not(.wizard--js) .wizard__step + .wizard__step {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--rule);
+}
+.wizard__title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-4);
+  font-size: var(--fs-lg);
+}
+.wizard__num {
+  flex: none;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-regular);
+  line-height: 1;
+  color: var(--hot);
+}
+.wizard__title:focus { outline: none; }
+
+.wizard__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--rule);
+}
+.wizard__nav [data-wz-next] { margin-left: auto; }
+
+/* ============================================================
+   22. Choice: two buttons that swap two panels
+   Without script both panels show stacked, first one first, and the
+   buttons stay hidden. Script adds .choice--js.
+   ============================================================ */
+
+.choice { max-width: var(--measure); }
+.choice__question {
+  margin: 0;
+  font-weight: var(--fw-semibold);
+}
+.choice__options {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 var(--space-5);
+}
+.choice__btn[aria-pressed="true"],
+.choice__btn[aria-pressed="true"]:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+.choice:not(.choice--js) .choice__panel + .choice__panel {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--rule);
+}
+.choice__panel > :first-child { margin-top: 0; }
+.choice__panel > :last-child { margin-bottom: 0; }
+.note,
+.choice__note {
+  margin: var(--space-2) 0 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-muted);
+}
+
+@media (min-width: 480px) {
+  .choice__options { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   23. Pair: an instruction beside its screenshot
+   One pair per instruction and its screenshot. Stacked below 960px (text, then
+   screenshot). From 960px, text on the left and media on the right.
+   ============================================================ */
+
+.pair {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.pair__text {
+  min-width: 0;
+  max-width: var(--measure);
+}
+.pair__text > :first-child { margin-top: 0; }
+.pair__text > :last-child { margin-bottom: 0; }
+.pair__media {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+.pair__media > .frame { margin: 0; }
+.pair__media > .frame--narrow { justify-self: start; width: 100%; }
+
+/* Whatever follows a pair gets room above it */
+.pair + :not(.pair) { margin-top: var(--space-6); }
+
+@media (min-width: 960px) {
+  .pair {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    column-gap: var(--space-7);
+    align-items: start;
+  }
+  .pair + .pair {
+    margin-top: var(--space-7);
+    padding-top: var(--space-7);
+    border-top: 1px solid var(--rule);
+  }
+}
+
+/* A row of buttons that wrap on a phone */
+.download-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

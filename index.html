@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a Skill with Claude</title>
+<meta name="description" content="A plain, step by step guide to your first task with Claude, from the AI Build Club DC AI 101 Workshop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to the guide</a>
+
+<div class="masthead">
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <img class="wordmark wordmark--paper site-header__logo" src="assets/abc-wordmark.png" width="1475" height="194" alt="AI Build Club DC">
+      <p class="site-header__title">AI 101 Workshop Guide</p>
+    </div>
+  </header>
+
+  <section class="hero" id="get-started">
+    <div class="wrap hero__inner hero__inner--qr">
+      <div class="hero__text">
+        <h1 class="hero__title fade-up" data-view-title>Build a Skill with Claude</h1>
+        <p class="hero__lead fade-up fade-up--2" data-view-lead>Make one on-brand presentation, then save how you made it as a skill, so every future presentation comes out the same way.</p>
+      </div>
+      <figure class="hero__qr">
+        <img src="assets/guide-qr.png" width="820" height="820" alt="QR code that opens this guide on your phone.">
+        <figcaption>Scan to open this guide</figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
+
+<div class="wrap page page--topnav">
+  <nav class="nav" aria-label="Guide sections">
+    <ul class="nav__list">
+      <li><a class="nav__link" href="#step-1" data-view-link="steps" aria-current="page">Workshop steps</a></li>
+      <li><a class="nav__link" href="#tour" data-view-link="tour">Get to know Claude</a></li>
+    </ul>
+  </nav>
+
+  <main class="content" id="main">
+    <div data-view="steps">
+    <div class="wizard" data-wizard data-wizard-hash id="wizard">
+      <p class="sr-only" role="status" aria-live="polite" data-wz-live></p>
+      <div class="wizard__bar" hidden>
+        <div class="wizard__top">
+          <div class="wizard__stepnav">
+            <button class="wizard__arrow" type="button" data-wz-prev aria-label="Previous step" aria-disabled="true"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <p class="wizard__count">Step <span data-wz-current>1</span> of 13</p>
+            <button class="wizard__arrow" type="button" data-wz-fwd aria-label="Next step"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <p class="wizard__phase" data-wz-phase>Before you start</p>
+        </div>
+        <div class="wizard__progress" role="progressbar" aria-label="Progress through the workshop steps" aria-valuemin="1" aria-valuemax="13" aria-valuenow="1"><span class="wizard__fill"></span></div>
+        <details class="wizard__all">
+          <summary class="btn btn--secondary">All steps</summary>
+          <div class="wizard__panel">
+            <div class="wizard__group">
+              <p class="wizard__group-name">Before you start</p>
+              <ol class="wizard__items">
+                <li><a class="wizard__link" href="#step-1" data-step="1">Check your account and plan</a></li>
+                <li><a class="wizard__link" href="#step-2" data-step="2">Make a Claude account</a></li>
+              </ol>
+            </div>
+            <div class="wizard__group">
+              <p class="wizard__group-name">Get ready</p>
+              <ol class="wizard__items">
+                <li><a class="wizard__link" href="#step-3" data-step="3">Live exercise: Download the template and logo</a></li>
+                <li><a class="wizard__link" href="#step-4" data-step="4">Connect Google Drive</a></li>
+                <li><a class="wizard__link" href="#step-5" data-step="5">Create a project</a></li>
+              </ol>
+            </div>
+            <div class="wizard__group">
+              <p class="wizard__group-name">Build your first deck</p>
+              <ol class="wizard__items">
+                <li><a class="wizard__link" href="#step-6" data-step="6">Stage 1: Interview</a></li>
+                <li><a class="wizard__link" href="#step-7" data-step="7">Stage 2: Research</a></li>
+                <li><a class="wizard__link" href="#step-8" data-step="8">Stage 3: Plan</a></li>
+                <li><a class="wizard__link" href="#step-9" data-step="9">Stage 4: Review</a></li>
+                <li><a class="wizard__link" href="#step-10" data-step="10">Stage 5: Build</a></li>
+              </ol>
+            </div>
+            <div class="wizard__group">
+              <p class="wizard__group-name">Save it as a skill</p>
+              <ol class="wizard__items">
+                <li><a class="wizard__link" href="#step-11" data-step="11">Turn the process into a skill</a></li>
+                <li><a class="wizard__link" href="#step-12" data-step="12">Find your saved skill</a></li>
+                <li><a class="wizard__link" href="#step-13" data-step="13">Use your skill in a new chat</a></li>
+              </ol>
+            </div>
+          </div>
+        </details>
+      </div>
+
+        <article class="wizard__step" id="wizard-step-1" data-phase="Before you start" aria-labelledby="wizard-step-1-title">
+          <h2 class="wizard__title" id="wizard-step-1-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">1</span>Check your account and plan</h2>
+          <div class="choice" data-choice>
+            <p class="choice__question" id="account-question">Do you have a Claude account?</p>
+            <p class="sr-only" role="status" aria-live="polite" data-choice-live></p>
+            <div class="choice__options" role="group" aria-labelledby="account-question" hidden>
+              <button class="btn btn--secondary choice__btn" type="button" aria-pressed="false" aria-controls="account-yes" data-choice-btn="yes" data-announce="Showing: one more check before you start.">Yes, I have an account</button>
+              <button class="btn btn--secondary choice__btn" type="button" aria-pressed="false" aria-controls="account-no" data-choice-btn="no" data-announce="Showing: how to get an account.">No, not yet</button>
+            </div>
+            <div class="choice__panel" id="account-yes" data-choice-panel="yes">
+              <p>Great. One more check before you start.</p>
+              <p>If you&rsquo;re on the free plan, your usage limit is lower, so you may run out of credits partway through the exercise.</p>
+              <p>For more usage, you can upgrade to the Claude Pro plan for $20 a month. Click <span class="ui">Upgrade</span> at the top of claude.ai.</p>
+              <p><button class="btn btn--primary" type="button" data-wz-goto="3" hidden>Go to step 3</button></p>
+            </div>
+            <div class="choice__panel" id="account-no" data-choice-panel="no">
+              <p>No problem. The next step shows you how to make one.</p>
+              <p><button class="btn btn--primary" type="button" data-wz-goto="2" hidden>Go to step 2</button></p>
+            </div>
+          </div>
+        </article>
+        <article class="wizard__step" id="wizard-step-2" data-phase="Before you start" aria-labelledby="wizard-step-2-title">
+          <h2 class="wizard__title" id="wizard-step-2-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">2</span>Make a Claude account</h2>
+          <div class="pair">
+            <div class="pair__text">
+          <p>Go to claude.ai and sign up with Google, Apple, or your email address.</p>
+          <h3 class="h3">Choose a plan</h3>
+          <p>If you&rsquo;re on the free plan, your usage limit is lower, so you may run out of credits partway through the exercise.</p>
+          <p>For more usage, you can upgrade to the Claude Pro plan for $20 a month. Click <span class="ui">Upgrade</span> at the top of claude.ai.</p>
+          <p><a class="btn btn--launch" href="https://claude.ai" target="_blank" rel="noopener">Open claude.ai<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only"> (opens in a new tab)</span></a></p>
+          <div class="callout callout--tip">
+            <p><strong>Tip.</strong> Web or desktop app, either works. You can do everything in your web browser at claude.ai. If you&rsquo;d rather use the desktop app, download it at <a class="link-external" href="https://claude.ai/download" target="_blank" rel="noopener">claude.ai/download<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+          </div>
+            </div>
+            <div class="pair__media">
+          <figure class="frame">
+            <div class="frame__window">
+              <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="frame__body"><div class="frame__shot"><picture><source media="(max-width: 600px)" srcset="assets/screens/claude-sign-in-phone.png"><img src="assets/screens/claude-sign-in.png" alt="The claude.ai sign-in page on a dark background, with the Continue with Google button, the Continue with Apple button, the email box and the Continue with email button circled."></picture><span class="frame__ring" style="--x: 23.4%; --y: 48.2%; --w: 61.6%; --h: 41.8%; --x-sm: 2.9%; --y-sm: 3.4%; --w-sm: 94.2%; --h-sm: 93.2%" aria-hidden="true"></span></div></div>
+            </div>
+            <figcaption class="frame__caption">Sign up with Google, Apple, or your email, circled.</figcaption>
+          </figure>
+            </div>
+          </div>
+</article>
+        <article class="wizard__step" id="wizard-step-3" data-phase="Get ready" aria-labelledby="wizard-step-3-title">
+          <h2 class="wizard__title" id="wizard-step-3-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">3</span>Live exercise: Download the template and logo</h2>
+          <p>The live exercise starts here. Follow along with Abhinav from this step on.</p>
+          <p>In this exercise you will make a presentation for the Junior League of Washington (JLW). Then you will teach Claude how you did it, so every future presentation comes out the same way.</p>
+          <p>First, download the two files below. You will upload them to Claude in a few minutes.</p>
+          <p class="download-row"><button class="btn btn--primary" type="button" aria-disabled="true" aria-describedby="download-note" data-download="template">Download the PowerPoint template</button> <button class="btn btn--primary" type="button" aria-disabled="true" aria-describedby="download-note" data-download="logo">Download the JLW logo</button></p>
+          <p class="note" id="download-note">This download link goes live soon.</p>
+          <div class="callout callout--tip">
+          <p><strong>Tip.</strong> Save both files somewhere easy to find, like your Downloads folder or your Desktop.</p>
+          </div>
+
+        </article>
+        <article class="wizard__step" id="wizard-step-4" data-phase="Get ready" aria-labelledby="wizard-step-4-title">
+          <h2 class="wizard__title" id="wizard-step-4-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">4</span>Connect Google Drive</h2>
+          <div class="pair">
+            <div class="pair__text">
+              <p>A connector lets Claude use another app for you, like Google Drive. You add it once.</p>
+              <ol>
+                <li>In Claude, click <span class="ui">Customize</span> in the left sidebar.</li>
+                <li>Click <span class="ui">Connectors</span>, then <span class="ui">Discover</span>.</li>
+                <li>Find Google Drive, or type it in the search box.</li>
+                <li>Click the plus on Google Drive.</li>
+                <li>Sign in to Google and allow access. A check mark means it is connected.</li>
+              </ol>
+              <div class="callout callout--tip">
+              <p><strong>Tip.</strong> This step is required. Claude needs the Google Drive connector to save your finished presentation to your Google Drive.</p>
+              </div>
+            </div>
+            <div class="pair__media">
+              <figure class="frame">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><picture><source media="(max-width: 600px)" srcset="assets/screens/connectors-google-drive-phone.png"><img src="assets/screens/connectors-google-drive.png" alt="The Claude connectors page, with the Google Drive card circled. It shows a check mark."></picture><span class="frame__ring" style="--x: 11.3%; --y: 63.0%; --w: 39.6%; --h: 11.0%; --x-sm: 2.5%; --y-sm: 12.1%; --w-sm: 94.9%; --h-sm: 26.7%" aria-hidden="true"></span></div></div>
+                </div>
+                <figcaption class="frame__caption">Google Drive, circled. The check mark means it is connected.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+        <article class="wizard__step" id="wizard-step-5" data-phase="Get ready" aria-labelledby="wizard-step-5-title">
+          <h2 class="wizard__title" id="wizard-step-5-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">5</span>Create a project</h2>
+          <div class="pair">
+            <div class="pair__text">
+              <p>A project keeps all the conversations for one piece of work in one place. Claude remembers what you tell it inside a project, so you don&rsquo;t have to explain the details again.</p>
+              <ul>
+                <li>In the left sidebar, click <span class="ui">Projects</span>.</li>
+              </ul>
+            </div>
+            <div class="pair__media">
+              <figure class="frame frame--narrow">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><img src="assets/screens/exercise/ex-6.png" alt="The Claude sidebar with New, Search, Projects, Artifacts, Code and Customize, and Projects highlighted."><span class="frame__ring" style="--x: 3%; --y: 44.5%; --w: 93%; --h: 12.5%" aria-hidden="true"></span></div></div>
+                </div>
+                <figcaption class="frame__caption">Click Projects, highlighted.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="pair__text">
+              <ul>
+                <li>Click <span class="ui">New project</span>.</li>
+                <li>Under <span class="ui">What are you working on?</span>, type a name, like <span class="ui">JLW Presentations</span>.</li>
+                <li>Under <span class="ui">What are you trying to achieve?</span>, write a sentence or two, like <em>Create consistent, on-brand presentations for the Junior League of Washington.</em></li>
+                <li>Click <span class="ui">Create project</span>.</li>
+              </ul>
+            </div>
+            <div class="pair__media">
+              <figure class="frame">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><picture><source media="(max-width: 600px)" srcset="assets/screens/exercise/ex-7-phone.png"><img src="assets/screens/exercise/ex-7.png" alt="The Create a project window with a name box, a goal box, and the Cancel and Create project buttons."></picture><span class="frame__ring" style="--x: 3.8%; --y: 22.5%; --w: 92.5%; --h: 12.5%; --x-sm: 2.3%; --y-sm: 20.7%; --w-sm: 95.3%; --h-sm: 13.1%" aria-hidden="true"></span><span class="frame__ring" style="--x: 75%; --y: 85.3%; --w: 21.7%; --h: 8.5%; --x-sm: 75.8%; --y-sm: 87.2%; --w-sm: 22.4%; --h-sm: 9.0%" aria-hidden="true"></span></div></div>
+                </div>
+                <figcaption class="frame__caption">Name the project, describe the goal, then click Create project, circled.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+        <article class="wizard__step" id="wizard-step-6" data-phase="Build your first deck" aria-labelledby="wizard-step-6-title">
+          <h2 class="wizard__title" id="wizard-step-6-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">6</span>Stage 1: Interview</h2>
+          <p>You will now work through five stages with Claude: interview, research, plan, review, and build. Each stage is one message from you. Together they get you to your first presentation.</p>
+          <ul>
+            <li>Open your project and start a new chat inside it.</li>
+            <li>Click the <span class="ui">+</span> button in the message box and upload the template and the logo you downloaded.</li>
+            <li>Copy the prompt below, paste it into the message box, and send it.</li>
+          </ul>
+<div class="prompt">
+<p class="prompt__text" id="ex-prompt-interview">Help me create a presentation on this topic following the uploaded template and logo.
+Topic: Why volunteering builds women's leaders
+Interview me - Ask me questions, one or two at a time, about who the audience is, what they already know, what I want them to think, feel, or do afterward, how long the talk is, and the tone. Ask follow-ups where my answers are vague. Wait for my answers. When you have enough, tell me you're ready to move on.</p>
+<div class="prompt__bar"><button class="btn btn--secondary" type="button" data-copy="ex-prompt-interview">Copy prompt</button><span class="prompt__hint" data-copy-hint></span><span class="sr-only" role="status" data-copy-status></span></div>
+</div>
+          <p>Claude will ask you questions, one or two at a time. Answer as if you were really giving this talk. Short answers are fine. If an answer is vague, Claude will ask a follow-up.</p>
+          <p>When Claude tells you it&rsquo;s ready to move on, go to the next step.</p>
+<div class="callout callout--tip">
+<p><strong>Tip.</strong> Stay in the same chat for the rest of this exercise. Claude uses everything you have already said.</p>
+</div>
+        </article>
+        <article class="wizard__step" id="wizard-step-7" data-phase="Build your first deck" aria-labelledby="wizard-step-7-title">
+          <h2 class="wizard__title" id="wizard-step-7-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">7</span>Stage 2: Research</h2>
+          <p>Now Claude looks up what matters for your audience and your goal, using current sources.</p>
+          <ul>
+            <li>Copy the prompt below, paste it into the same chat, and send it.</li>
+          </ul>
+<div class="prompt">
+<p class="prompt__text" id="ex-prompt-research">Research the topic using current, credible sources, focused on what matters for this audience and goal. Collect the key findings and source links.</p>
+<div class="prompt__bar"><button class="btn btn--secondary" type="button" data-copy="ex-prompt-research">Copy prompt</button><span class="prompt__hint" data-copy-hint></span><span class="sr-only" role="status" data-copy-status></span></div>
+</div>
+          <p>Claude will gather key findings and links to its sources. This takes a few minutes. Let Claude finish before you reply.</p>
+<div class="callout callout--tip">
+<p><strong>Tip.</strong> Skim the findings and open a link or two. You are the expert on your audience, so tell Claude if something doesn&rsquo;t fit.</p>
+</div>
+        </article>
+        <article class="wizard__step" id="wizard-step-8" data-phase="Build your first deck" aria-labelledby="wizard-step-8-title">
+          <h2 class="wizard__title" id="wizard-step-8-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">8</span>Stage 3: Plan</h2>
+          <p>Next, Claude turns the interview and research into a slide-by-slide outline. Because you uploaded the template, Claude can only use slide layouts the template really has. That keeps the deck on brand.</p>
+          <ul>
+            <li>Copy the prompt below, paste it into the same chat, and send it.</li>
+          </ul>
+<div class="prompt">
+<p class="prompt__text" id="ex-prompt-plan">Propose a slide-by-slide outline. Only use layouts the template actually has. Wait for me to approve or revise.</p>
+<div class="prompt__bar"><button class="btn btn--secondary" type="button" data-copy="ex-prompt-plan">Copy prompt</button><span class="prompt__hint" data-copy-hint></span><span class="sr-only" role="status" data-copy-status></span></div>
+</div>
+          <p>Claude will propose an outline and then wait for you. Do not approve it yet. Go to the next step to review it.</p>
+        </article>
+        <article class="wizard__step" id="wizard-step-9" data-phase="Build your first deck" aria-labelledby="wizard-step-9-title">
+          <h2 class="wizard__title" id="wizard-step-9-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">9</span>Stage 4: Review</h2>
+          <p>This stage has no prompt. It is your turn to be the editor.</p>
+          <ul>
+            <li>Read the outline slide by slide. Is it the right length for your talk? Is anything missing, or in the wrong order?</li>
+            <li>If you want changes, reply in plain words. Claude will update the outline and show it to you again.</li>
+            <li>When you are happy with the outline, move on to the next step.</li>
+          </ul>
+<div class="callout callout--tip">
+<p><strong>Tip.</strong> You can say things like <em>Combine slides 3 and 4</em>, <em>Make the opening slide shorter</em>, or <em>Add a slide about a real volunteer story</em>.</p>
+</div>
+        </article>
+        <article class="wizard__step" id="wizard-step-10" data-phase="Build your first deck" aria-labelledby="wizard-step-10-title">
+          <h2 class="wizard__title" id="wizard-step-10-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">10</span>Stage 5: Build</h2>
+          <p>Now Claude makes the presentation.</p>
+          <ul>
+            <li>Copy the prompt below, paste it into the same chat, and send it.</li>
+          </ul>
+<div class="prompt">
+<p class="prompt__text" id="ex-prompt-build">Go ahead and build the PowerPoint.</p>
+<div class="prompt__bar"><button class="btn btn--secondary" type="button" data-copy="ex-prompt-build">Copy prompt</button><span class="prompt__hint" data-copy-hint></span><span class="sr-only" role="status" data-copy-status></span></div>
+</div>
+          <p>Claude will build a PowerPoint file using your template and logo. When it finishes, open the file and look it over. If something is off, tell Claude what to fix.</p>
+<div class="callout callout--headsup">
+<p><strong>Heads-up.</strong> Building a deck can take several minutes. Let Claude finish before you reply.</p>
+</div>
+          <p>That is your first presentation. Next, you will save the way you made it so you never have to explain it again.</p>
+        </article>
+        <article class="wizard__step" id="wizard-step-11" data-phase="Save it as a skill" aria-labelledby="wizard-step-11-title">
+          <h2 class="wizard__title" id="wizard-step-11-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">11</span>Turn the process into a skill</h2>
+          <div class="pair">
+            <div class="pair__text">
+              <p>A skill is a set of instructions Claude saves and follows whenever you ask. You just did a five-stage process by hand. Now you will ask Claude to remember it.</p>
+              <ul>
+                <li>In the same chat, copy the prompt below, paste it, and send it.</li>
+              </ul>
+              <div class="prompt">
+              <p class="prompt__text" id="ex-prompt-skill">Now turn the process we just used into a reusable skill called "JLW Branded Presentation." Include the five stages (interview, research, read template, outline mapped to layouts with my approval, build and save to Drive). Make the interview adaptive, not tied to this topic. Include the template. Show me the skill before saving.</p>
+              <div class="prompt__bar"><button class="btn btn--secondary" type="button" data-copy="ex-prompt-skill">Copy prompt</button><span class="prompt__hint" data-copy-hint></span><span class="sr-only" role="status" data-copy-status></span></div>
+              </div>
+              <p>Claude will show you the skill it wrote before saving anything.</p>
+              <ul>
+                <li>Click the skill to review it. If you want something different, tell Claude what to change.</li>
+                <li>Notice what Claude put inside: it saved your logos, wrote brand guidelines, and documented the whole process.</li>
+                <li>When you are happy, click <span class="ui">Save</span>.</li>
+              </ul>
+            </div>
+            <div class="pair__media">
+              <figure class="frame frame--narrow">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><img src="assets/screens/exercise/ex-5.png" alt="The file list of the jlw-branded-presentation skill, with folders named assets, references and scripts, and a file named SKILL.md."></div></div>
+                </div>
+                <figcaption class="frame__caption">A skill is a small folder. Yours may look a little different from this one.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+        <article class="wizard__step" id="wizard-step-12" data-phase="Save it as a skill" aria-labelledby="wizard-step-12-title">
+          <h2 class="wizard__title" id="wizard-step-12-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">12</span>Find your saved skill</h2>
+          <div class="pair">
+            <div class="pair__text">
+              <p>Your skill is saved in the Customize area, where you also find connectors and plugins.</p>
+              <ul>
+                <li>In the left sidebar, click <span class="ui">Customize</span>.</li>
+              </ul>
+            </div>
+            <div class="pair__media">
+              <figure class="frame frame--narrow">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><img src="assets/screens/exercise/ex-2.png" alt="The Claude sidebar with New, Search, Projects, Artifacts, Code and Customize, and Customize highlighted."><span class="frame__ring" style="--x: 3%; --y: 81.5%; --w: 93%; --h: 12.5%" aria-hidden="true"></span></div></div>
+                </div>
+                <figcaption class="frame__caption">Click Customize, highlighted.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="pair__text">
+              <ul>
+                <li>Click <span class="ui">Skills</span>, then <span class="ui">Yours</span>. Your skill is listed here.</li>
+                <li>Click it any time to read it or change it.</li>
+              </ul>
+            </div>
+            <div class="pair__media">
+              <figure class="frame">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><picture><source media="(max-width: 600px)" srcset="assets/screens/exercise/ex-1-phone.png"><img src="assets/screens/exercise/ex-1.png" alt="The Customize page with the Skills tab selected and the Yours list showing one skill that you created."></picture><span class="frame__ring" style="--x: 0.8%; --y: 67%; --w: 98.4%; --h: 22%; --x-sm: 0.9%; --y-sm: 55.6%; --w-sm: 98.2%; --h-sm: 29.4%" aria-hidden="true"></span></div></div>
+                </div>
+                <figcaption class="frame__caption">Customize, then Skills, then Yours. Your new skill is listed under Created by you.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+        <article class="wizard__step" id="wizard-step-13" data-phase="Save it as a skill" aria-labelledby="wizard-step-13-title">
+          <h2 class="wizard__title" id="wizard-step-13-title" tabindex="-1"><span class="wizard__num" aria-hidden="true">13</span>Use your skill in a new chat</h2>
+          <div class="pair">
+            <div class="pair__text">
+              <p>Now see the payoff. You will make a different presentation without repeating any instructions.</p>
+              <ul>
+                <li>Click <span class="ui">New</span> in the left sidebar to start a new conversation.</li>
+                <li>In the message box, type <span class="ui">/</span> to see your saved skills.</li>
+                <li>Click the skill you just made.</li>
+              </ul>
+            </div>
+            <div class="pair__media">
+              <figure class="frame">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><picture><source media="(max-width: 600px)" srcset="assets/screens/exercise/ex-3-phone.png"><img src="assets/screens/exercise/ex-3.png" alt="The message box with a slash typed, a menu above it listing jlw-branded-presentation, and a description of the skill beside it."></picture><span class="frame__ring" style="--x: 3.8%; --y: 0.5%; --w: 33.8%; --h: 15.0%; --x-sm: 6.5%; --y-sm: 0.6%; --w-sm: 60.7%; --h-sm: 25.0%" aria-hidden="true"></span></div></div>
+                </div>
+                <figcaption class="frame__caption">Type /, then pick your skill.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="pair__text">
+              <ul>
+                <li>After the skill name, give Claude a topic. You can copy this one:</li>
+              </ul>
+              <div class="prompt">
+              <p class="prompt__text" id="ex-prompt-topic">topic: How volunteer organizations can use AI to save time without losing the personal touch</p>
+              <div class="prompt__bar"><button class="btn btn--secondary" type="button" data-copy="ex-prompt-topic">Copy prompt</button><span class="prompt__hint" data-copy-hint></span><span class="sr-only" role="status" data-copy-status></span></div>
+              </div>
+            </div>
+            <div class="pair__media">
+              <figure class="frame">
+                <div class="frame__window">
+                  <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+                  <div class="frame__body"><div class="frame__shot"><img src="assets/screens/exercise/ex-4.png" alt="The message box with the jlw-branded-presentation skill selected, followed by a topic about how volunteer organizations can use AI to save time."><span class="frame__ring" style="--x: 6.4%; --y: 13.2%; --w: 27.1%; --h: 15.9%" aria-hidden="true"></span></div></div>
+                </div>
+                <figcaption class="frame__caption">The skill name, then your topic. Press Enter to send.</figcaption>
+              </figure>
+            </div>
+          </div>
+          <p>Claude follows the same five stages you went through before, without you telling it again.</p>
+          <hr>
+          <h3 class="h3">What&rsquo;s next</h3>
+          <p>This is the 101 on skills. If you are curious, search for <span class="ui">Claude Skills</span> on YouTube to learn more. Or come to another session and we can go deeper.</p>
+          <p><a class="btn btn--launch" href="https://www.youtube.com/results?search_query=Claude+Skills" target="_blank" rel="noopener">Search Claude Skills on YouTube<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only"> (opens in a new tab)</span></a></p>
+        </article>
+
+      <div class="wizard__nav" hidden>
+        <button class="btn btn--secondary" type="button" data-wz-back aria-keyshortcuts="ArrowLeft"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Back</span></button>
+        <button class="btn btn--primary" type="button" data-wz-next aria-keyshortcuts="ArrowRight"><span data-wz-next-label>Next</span><span data-wz-next-icon><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+      </div>
+    </div>
+
+    <hr>
+
+    <p class="sources">Sources: <a class="link-external" href="https://support.claude.com/en/articles/16761823-claude-cowork-and-chat-are-one-claude" target="_blank" rel="noopener">Claude Help Center<span class="sr-only"> (opens in a new tab)</span></a> and <a class="link-external" href="https://claude.com/resources/guides/claude-cowork-product-guide/getting-started" target="_blank" rel="noopener">Anthropic's getting-started guide<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+
+    </div>
+
+    <div data-view="tour" hidden>
+          <p>Here is what the main buttons in Claude do, so you know your way around.</p>
+          <p class="note">On this page</p>
+          <p class="download-row">
+            <a class="btn btn--secondary" href="#tour-files">Add files and more</a>
+            <a class="btn btn--secondary" href="#tour-model">Pick a model</a>
+            <a class="btn btn--secondary" href="#tour-permissions">Choose how much Claude asks first</a>
+            <a class="btn btn--secondary" href="#tour-customize">Customize</a>
+          </p>
+          <div class="pair" id="tour-files">
+            <div class="pair__text">
+          <h2 class="h3">Add files and more</h2>
+          <p>Click the <span class="ui">+</span> button in the message box to add files, photos, or other attachments to your message. It is also where you find extra tools, like Research and any skills you have added.</p>
+            </div>
+            <div class="pair__media">
+          <figure class="frame">
+            <div class="frame__window">
+              <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="frame__body"><div class="frame__shot"><img src="assets/screens/new-conversation.png" alt="A new conversation in the Claude app, with the plus button at the bottom left of the message box circled."><span class="frame__ring" style="--x: 2.8%; --y: 61.4%; --w: 4.8%; --h: 15.9%" aria-hidden="true"></span></div></div>
+            </div>
+            <figcaption class="frame__caption">The plus button, circled.</figcaption>
+          </figure>
+            </div>
+          </div>
+          <div class="pair" id="tour-model">
+            <div class="pair__text">
+          <h2 class="h3">Pick a model</h2>
+          <p>Click the model name under the message box, like <span class="ui">Sonnet 5.5</span>, to choose which version of Claude answers you.</p>
+          <ul>
+            <li>Fable 5.1: for your toughest challenges. Included in Max, or with usage credits on Pro.</li>
+            <li>Opus 5.5: for complex work and everyday tasks. Needs a paid plan.</li>
+            <li>Sonnet 5.5: most efficient for simpler tasks.</li>
+            <li>Haiku 5.5: fastest for quick answers.</li>
+          </ul>
+          <p><span class="ui">Effort</span> in the same menu sets how much thinking Claude does before it answers. Higher effort takes longer but is more careful.</p>
+            </div>
+            <div class="pair__media">
+          <figure class="frame">
+            <div class="frame__window">
+              <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="frame__body"><div class="frame__shot"><img src="assets/screens/model-menu.png" alt="The Claude model menu open, listing Fable 5.1, Opus 5.5, Sonnet 5.5 and Haiku 5.5, with the Sonnet 5.5 Medium button above it circled."><span class="frame__ring" style="--x: 62.2%; --y: 2.2%; --w: 35.3%; --h: 9.1%" aria-hidden="true"></span></div></div>
+            </div>
+            <figcaption class="frame__caption">Click the model name, circled, to open this menu.</figcaption>
+          </figure>
+            </div>
+          </div>
+          <div class="pair" id="tour-permissions">
+            <div class="pair__text">
+          <h2 class="h3">Choose how much Claude asks first</h2>
+          <p>Next to the model is the <span class="ui">Permission mode</span> setting. It controls how much Claude checks with you before it acts.</p>
+          <dl class="glossary">
+            <div class="glossary__entry"><dt>Manual</dt><dd>Claude asks before using new tools or opening new sites.</dd></div>
+            <div class="glossary__entry"><dt>Auto</dt><dd>Claude runs on its own and pauses to ask if anything looks unsafe.</dd></div>
+          </dl>
+          <div class="callout callout--tip">
+            <p><strong>Tip.</strong> Start with <span class="ui">Manual</span> for your first few tasks, so you can see each step before it happens.</p>
+          </div>
+            </div>
+            <div class="pair__media">
+          <figure class="frame">
+            <div class="frame__window">
+              <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="frame__body"><div class="frame__shot"><picture><source media="(max-width: 600px)" srcset="assets/screens/permission-mode-phone.png"><img src="assets/screens/permission-mode.png" alt="The Claude message box with the Manual button circled and the Permission mode menu open, showing Manual and Auto."></picture><span class="frame__ring" style="--x: 86.0%; --y: 37.0%; --w: 11.6%; --h: 10.0%; --x-sm: 70.0%; --y-sm: 2.5%; --w-sm: 24.5%; --h-sm: 17.2%" aria-hidden="true"></span></div></div>
+            </div>
+            <figcaption class="frame__caption">Click Manual or Auto, circled, to open this menu.</figcaption>
+          </figure>
+            </div>
+          </div>
+          <div class="pair" id="tour-customize">
+            <div class="pair__text">
+          <h2 class="h3">Customize: skills, connectors, and plugins</h2>
+          <p>In the left sidebar, click <span class="ui">Customize</span>. This is where you give Claude new abilities. It has three tabs.</p>
+            </div>
+            <div class="pair__media">
+          <figure class="frame frame--narrow">
+            <div class="frame__window">
+              <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="frame__body"><div class="frame__shot"><img src="assets/screens/sidebar-customize.png" alt="The Claude left sidebar, with the Customize row circled."><span class="frame__ring" style="--x: 1.1%; --y: 53.3%; --w: 96.3%; --h: 10.4%" aria-hidden="true"></span></div></div>
+            </div>
+            <figcaption class="frame__caption">Customize, circled, in the left sidebar.</figcaption>
+          </figure>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="pair__text">
+          <dl class="glossary">
+            <div class="glossary__entry"><dt>Skills</dt><dd>Instructions that teach Claude how to do a task your way, like writing in your organization's voice or formatting a report. Claude uses a skill on its own when a task calls for it.</dd></div>
+            <div class="glossary__entry"><dt>Connectors</dt><dd>Links between Claude and the apps you already use, like Google Drive, Gmail, or Google Calendar. With a connector, Claude can find and work with your files, email, and events.</dd></div>
+            <div class="glossary__entry"><dt>Plugins</dt><dd>Ready-made bundles of skills and connectors for one kind of work, like marketing or design. Install one and everything comes set up together.</dd></div>
+          </dl>
+          <p>These are what make Claude yours. Connectors give Claude your information, skills give it your way of working, and plugins package both. In the exercise, you will build your own skill.</p>
+            </div>
+            <div class="pair__media">
+          <figure class="frame">
+            <div class="frame__window">
+              <div class="frame__bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="frame__body"><div class="frame__shot"><picture><source media="(max-width: 600px)" srcset="assets/screens/connectors-tabs-phone.png"><img src="assets/screens/connectors-google-drive.png" alt="The Customize page in Claude, with the three tabs Skills, Connectors and Plugins circled."></picture><span class="frame__ring" style="--x: 12.0%; --y: 11.8%; --w: 18.3%; --h: 4.9%; --x-sm: 4.5%; --y-sm: 36.8%; --w-sm: 48.5%; --h-sm: 26.3%" aria-hidden="true"></span></div></div>
+            </div>
+            <figcaption class="frame__caption">The three tabs in Customize, circled.</figcaption>
+          </figure>
+            </div>
+          </div>
+          <p class="step-end"><a class="btn btn--primary" href="#step-1" data-back-to-steps>Back to the steps</a></p>
+    </div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <img class="wordmark site-footer__logo" src="assets/abc-wordmark.png" width="1475" height="194" alt="AI Build Club DC">
+    <div>
+      <p>Made for the Junior League of Washington AI 101 Workshop, October 28, 2026.</p>
+      <p><a class="link-external" href="https://luma.com/aibuildclub" target="_blank" rel="noopener">See upcoming AI Build Club DC events<span class="sr-only"> (opens in a new tab)</span></a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Old links still work: #exercise, #ex-N and #get-started become #step-N.
+   This runs first, so the wizard sees the new hash. */
+(function () {
+  function map(h) {
+    if (h === '#exercise') return '#step-3';
+    var m = /^#ex-(\d+)$/.exec(h);
+    if (m) return '#step-' + (parseInt(m[1], 10) + 2);
+    if (h === '#get-started') return '#step-1';
+    return null;
+  }
+  function fix() {
+    var n = map(location.hash);
+    if (n) { try { history.replaceState(null, '', n); } catch (e) {} }
+  }
+  fix();
+  window.addEventListener('hashchange', fix);
+})();
+
+/* Copy prompt. Shared by sample-page.html and design-system.html (identical copy). */
+(function () {
+  var timers = new WeakMap();
+  function isMac() { return /Mac|iPhone|iPad/.test(navigator.userAgent); }
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-copy]');
+    if (!btn) return;
+    var source = document.getElementById(btn.getAttribute('data-copy'));
+    var bar = btn.parentNode;
+    var hint = bar.querySelector('[data-copy-hint]');
+    var status = bar.querySelector('[data-copy-status]');
+    var original = btn.getAttribute('data-label') || btn.textContent;
+    btn.setAttribute('data-label', original);
+    var text = source.textContent.trim();
+
+    function reset() { btn.textContent = original; if (hint) hint.textContent = ''; }
+    function arm() { clearTimeout(timers.get(btn)); timers.set(btn, setTimeout(reset, 2000)); }
+    function ok() {
+      btn.textContent = 'Copied';
+      if (hint) hint.textContent = '';
+      if (status) status.textContent = 'Prompt copied to the clipboard.';
+      arm();
+    }
+    function fallback() {
+      var range = document.createRange();
+      range.selectNodeContents(source);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      var msg = isMac() ? 'Press Cmd+C to copy' : 'Press Ctrl+C to copy';
+      if (hint) hint.textContent = msg;
+      if (status) status.textContent = msg;
+      arm();
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();
+
+/* Choice: two buttons swap two panels. Without script both panels show stacked.
+   Shared by sample-page.html and design-system.html (identical copy). */
+(function () {
+  [].forEach.call(document.querySelectorAll('[data-choice]'), function (root) {
+    if (root.classList.contains('choice--js')) return;
+    var opts = root.querySelector('.choice__options');
+    var btns = [].slice.call(root.querySelectorAll('[data-choice-btn]'));
+    var panels = [].slice.call(root.querySelectorAll('[data-choice-panel]'));
+    var live = root.querySelector('[data-choice-live]');
+    root.classList.add('choice--js');
+    opts.hidden = false;
+    panels.forEach(function (p) { p.hidden = true; });
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var key = b.getAttribute('data-choice-btn');
+        btns.forEach(function (x) {
+          x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+        });
+        panels.forEach(function (p) { p.hidden = (p.getAttribute('data-choice-panel') !== key); });
+        if (live) live.textContent = b.getAttribute('data-announce') || '';
+      });
+    });
+  });
+})();
+
+/* Wizard: one step per screen. Without script every step shows stacked.
+   Shared by sample-page.html and design-system.html (identical copy). */
+(function () {
+  var wizards = [].slice.call(document.querySelectorAll('[data-wizard]'));
+  if (!wizards.length) return;
+
+  function setup(root) {
+    if (root.classList.contains('wizard--js')) return;
+
+    var steps = [].slice.call(root.querySelectorAll('.wizard__step'));
+    var bar = root.querySelector('.wizard__bar');
+    var nav = root.querySelector('.wizard__nav');
+    var curEl = root.querySelector('[data-wz-current]');
+    var phaseEl = root.querySelector('[data-wz-phase]');
+    var fill = root.querySelector('.wizard__fill');
+    var prog = root.querySelector('.wizard__progress');
+    var back = root.querySelector('[data-wz-back]');
+    var next = root.querySelector('[data-wz-next]');
+    var prevArrow = root.querySelector('[data-wz-prev]');
+    var fwdArrow = root.querySelector('[data-wz-fwd]');
+    var nextLabel = root.querySelector('[data-wz-next-label]');
+    var nextIcon = root.querySelector('[data-wz-next-icon]');
+    var all = root.querySelector('.wizard__all');
+    var live = root.querySelector('[data-wz-live]');
+    var links = [].slice.call(root.querySelectorAll('[data-step]'));
+    var useHash = root.hasAttribute('data-wizard-hash');
+    var prefix = root.getAttribute('data-wizard-prefix') || '#step-';
+    var n = steps.length;
+    var idx = 0;
+
+    root.classList.add('wizard--js');
+    bar.hidden = false;
+    nav.hidden = false;
+
+    /* opts.move: scroll the progress bar into view and focus the step heading.
+       opts.announce: tell screen readers which step is showing. */
+    function show(i, opts) {
+      opts = opts || {};
+      i = Math.max(0, Math.min(n - 1, i));
+      idx = i;
+      steps.forEach(function (s, k) { s.hidden = (k !== i); });
+      curEl.textContent = i + 1;
+      phaseEl.textContent = steps[i].getAttribute('data-phase');
+      fill.style.setProperty('--p', ((i + 1) / n * 100) + '%');
+      prog.setAttribute('aria-valuenow', i + 1);
+      prog.setAttribute('aria-valuetext', 'Step ' + (i + 1) + ' of ' + n);
+      links.forEach(function (a) {
+        if (+a.getAttribute('data-step') === i + 1) a.setAttribute('aria-current', 'step');
+        else a.removeAttribute('aria-current');
+      });
+      back.hidden = (i === 0);
+      nextLabel.textContent = (i === n - 1) ? 'Back to start' : 'Next';
+      nextIcon.hidden = (i === n - 1);
+      /* The top arrows stop at the ends. They are aria-disabled, not disabled, so focus is never lost. */
+      prevArrow.setAttribute('aria-disabled', i === 0 ? 'true' : 'false');
+      fwdArrow.setAttribute('aria-disabled', i === n - 1 ? 'true' : 'false');
+      next.classList.toggle('btn--primary', i !== n - 1);
+      next.classList.toggle('btn--secondary', i === n - 1);
+      if (all) all.open = false;
+      /* Keep the hash equal to the step shown. Only touch hashes that start with #step- */
+      if (useHash && opts.hash !== false) {
+        try { history.replaceState(null, '', prefix + (i + 1)); } catch (e) {}
+      }
+      if (opts.move) {
+        /* The bar goes to the top of the window. The content swaps at the same
+           moment, so this is a jump, never a glide. That also covers reduced motion. */
+        bar.scrollIntoView({ block: 'start', behavior: 'instant' });
+        var title = steps[i].querySelector('.wizard__title');
+        if (title) title.focus({ preventScroll: true });
+      }
+      if (opts.announce && live) {
+        live.textContent = 'Step ' + (i + 1) + ' of ' + n + ', ' + steps[i].getAttribute('data-phase');
+      }
+    }
+
+    function go(i) { show(i, { move: true, announce: true }); }
+
+    /* Returns the step index for a hash that starts with this wizard's prefix, or -1 if the hash is not ours. */
+    function fromHash() {
+      var m = new RegExp('^' + prefix + '(.*)$').exec(location.hash);
+      if (!m) return -1;
+      var v = parseInt(m[1], 10);
+      return isNaN(v) ? 0 : Math.max(0, Math.min(n - 1, v - 1));
+    }
+
+    back.addEventListener('click', function () { go(idx - 1); });
+    prevArrow.addEventListener('click', function () {
+      if (prevArrow.getAttribute('aria-disabled') !== 'true') go(idx - 1);
+    });
+    fwdArrow.addEventListener('click', function () {
+      if (fwdArrow.getAttribute('aria-disabled') !== 'true') go(idx + 1);
+    });
+    next.addEventListener('click', function () { go(idx === n - 1 ? 0 : idx + 1); });
+    links.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        go(+a.getAttribute('data-step') - 1);
+      });
+    });
+    /* Any button with data-wz-goto="N" moves the wizard to step N, the same way Next does */
+    [].forEach.call(root.querySelectorAll('[data-wz-goto]'), function (b) {
+      b.hidden = false;
+      b.addEventListener('click', function () { go(+b.getAttribute('data-wz-goto') - 1); });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      if (!root.getClientRects().length) return; /* this wizard is on a hidden view */
+      var t = e.target;
+      if (t && t.closest && t.closest('input, textarea, select, [contenteditable]')) return;
+      var active = document.activeElement;
+      var mine = root.contains(active) || (useHash && (active === document.body || !active));
+      if (!mine) return;
+      e.preventDefault();
+      if (e.key === 'ArrowRight') { if (idx < n - 1) go(idx + 1); }
+      else if (idx > 0) go(idx - 1);
+    });
+
+    if (useHash) {
+      window.addEventListener('hashchange', function () {
+        var h = fromHash();
+        if (h >= 0) go(h);
+      });
+      var start = fromHash();
+      if (start >= 0) {
+        show(start, { move: true });
+        /* Layout and scroll restoration settle after the page loads, so scroll the bar again then */
+        if (document.readyState !== 'complete') {
+          window.addEventListener('load', function () { bar.scrollIntoView({ block: 'start', behavior: 'instant' }); });
+        }
+        return;
+      }
+    }
+    show(0, { hash: false });
+  }
+
+  wizards.forEach(setup);
+})();
+
+/* Two tabs in one page: the workshop steps and a reference tour. The hash picks
+   the tab: #tour and #tour-* show the tour, anything else shows the steps. */
+(function () {
+  var views = [].slice.call(document.querySelectorAll('[data-view]'));
+  var title = document.querySelector('[data-view-title]');
+  var lead = document.querySelector('[data-view-lead]');
+  var links = [].slice.call(document.querySelectorAll('[data-view-link]'));
+  var lastStep = '#step-1';   /* where "Back to the steps" returns to */
+  var shown = null;
+  var text = {
+    steps: { title: title.textContent, lead: lead.textContent, doc: document.title },
+    tour: {
+      title: 'Get to know Claude',
+      lead: 'A quick tour of Claude\u2019s main buttons and features. Come back to it any time.',
+      doc: 'Get to Know Claude'
+    }
+  };
+  function current() { return /^#tour/.test(location.hash) ? 'tour' : 'steps'; }
+  function route() {
+    var v = current();
+    views.forEach(function (el) { el.hidden = (el.getAttribute('data-view') !== v); });
+    title.textContent = text[v].title;
+    lead.textContent = text[v].lead;
+    document.title = text[v].doc;
+    links.forEach(function (a) {
+      if (a.getAttribute('data-view-link') === v) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+    if (v === 'tour') {
+      var target = location.hash.length > 5 ? document.getElementById(location.hash.slice(1)) : null;
+      if (target) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+      else if (shown !== 'tour') window.scrollTo(0, 0);
+    }
+    shown = v;
+  }
+  /* Remember the step before leaving for the tour */
+  document.addEventListener('click', function (e) {
+    var toTour = e.target.closest('a[href^="#tour"]');
+    if (toTour && /^#step-/.test(location.hash)) lastStep = location.hash;
+    var back = e.target.closest('[data-back-to-steps], a[data-view-link="steps"]');
+    if (back) {
+      e.preventDefault();
+      location.hash = lastStep;
+      window.scrollTo(0, 0);
+    }
+  });
+  window.addEventListener('hashchange', route);
+  route();
+})();
+
+/* Download buttons for the exercise start greyed out. When the two files are on
+   Google Drive, put their links here. The buttons then become real links that
+   open in a new tab, and the "goes live soon" note goes away. */
+(function () {
+  var DOWNLOAD_URLS = {
+    template: 'https://drive.google.com/file/d/1YCW_iX5GmMpV5ym63WWtAD1R035rRtmp/view?usp=sharing',  /* the PowerPoint template */
+    logo: 'https://drive.google.com/file/d/1w0i3nTD7eGTwX4vyduliOl84BJ_2314u/view?usp=sharing'       /* the JLW logo */
+  };
+  var any = false;
+  [].forEach.call(document.querySelectorAll('[data-download]'), function (b) {
+    var url = DOWNLOAD_URLS[b.getAttribute('data-download')];
+    if (!url) return;
+    var a = document.createElement('a');
+    a.className = 'btn btn--primary';
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = b.textContent + '<span class="sr-only"> (opens in a new tab)</span>';
+    b.parentNode.replaceChild(a, b);
+    any = true;
+  });
+  var note = document.getElementById('download-note');
+  if (note && any && !document.querySelector('[data-download]')) note.hidden = true;
+})();
+</script>
+</body>
+</html>
