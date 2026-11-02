@@ -256,7 +256,8 @@ code {
     box-shadow: var(--shadow-soft);
   }
   .hero__qr img { display: block; width: clamp(16rem, 27vw, 26rem); height: auto; image-rendering: pixelated; }
-  .hero__qr figcaption { font-size: var(--fs-md); font-weight: var(--fw-semibold); color: var(--ink); }
+  .hero__qr figcaption { display: grid; justify-items: center; gap: var(--space-1); font-size: var(--fs-md); font-weight: var(--fw-semibold); color: var(--ink); }
+  .hero__qr-url { font-size: var(--fs-base); font-weight: var(--fw-medium); color: var(--ink-muted); }
 }
 
 /* Page title: the deck's big red Anton moment. Write it in sentence case in the HTML;
